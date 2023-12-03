@@ -1,13 +1,20 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/WEb9JC
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
 drop table if exists dept_manager;
 drop table if exists dept_emp;
 drop table if exists departments;
 drop table if exists salaries;
 drop table if exists employees;
 drop table if exists titles;
+
+CREATE TABLE titles (
+    title_id VARCHAR(30) NOT NULL,
+    title VARCHAR(30) NOT NULL,
+    CONSTRAINT pk_titles PRIMARY KEY (
+        title_id
+     )
+);
 
 CREATE TABLE employees (
     emp_no INTEGER NOT NULL,
@@ -30,14 +37,6 @@ CREATE TABLE salaries (
      )
 );
 
-CREATE TABLE titles (
-    title_id VARCHAR(30) NOT NULL,
-    title VARCHAR(30) NOT NULL,
-    CONSTRAINT pk_titles PRIMARY KEY (
-        title_id
-     )
-);
-
 CREATE TABLE departments (
     dept_no VARCHAR(30) NOT NULL,
     dept_name VARCHAR(30) NOT NULL,
@@ -56,8 +55,8 @@ CREATE TABLE dept_emp (
 );
 
 CREATE TABLE dept_manager (
-    emp_no INTEGER NOT NULL,
     dept_no VARCHAR(30) NOT NULL,
+	emp_no INTEGER NOT NULL,
     CONSTRAINT pk_dept_manager PRIMARY KEY (
         emp_no
      )
